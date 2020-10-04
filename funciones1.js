@@ -4,70 +4,120 @@ var lenguaje1=[];
 var lenguaje2=[];
 var palabra=[]
 function obtenerpalabra(id){
-	palabra=obtenerDato(id);
-	console.log(palabra);
-	var g_p={
-    	'vector_al1':[]
-    };
-    g_p.vector_al1=palabra;
-    localStorage.setItem('g_p', JSON.stringify(g_p))
-    var guardado_p=JSON.parse(localStorage.getItem('g_p'));
-    console.log(guardado_p);
+    palabra=obtenerDato(id);
+    if(palabra.length>1){
+        alert("Solo puede ingresar una palabra");
+    }
+    else if(palabra[0]=="&"){
+        console.log(palabra[0]);
+        alert("Por favor ingrese una palabra");
+    }
+    else{
+        var g_p={
+            'vector_al1':[]
+        };
+        g_p.vector_al1=palabra;
+        localStorage.setItem('g_p', JSON.stringify(g_p))
+        var guardado_p=JSON.parse(localStorage.getItem('g_p'));
+        location.href="index_palabra_operaciones.html";
+    }
+    
 }
 function obtenerlenguajes(id1,id2){
-	lenguaje1=obtenerDato(id1);
-	lenguaje2=obtenerDato(id2);
-	console.log("hola");
-	var g_l={
-    	'vector_al1':[],
-    	'vector_al2':[]
-    };
-    g_l.vector_al1=lenguaje1;
-    g_l.vector_al2=lenguaje2;
-    localStorage.setItem('g_l', JSON.stringify(g_l))
-    var guardado_l=JSON.parse(localStorage.getItem('g_l'));
+    lenguaje1=obtenerDato(id1);
+    lenguaje2=obtenerDato(id2);
+    if(!buscarrepetidos(lenguaje1)){
+        alert("hay elementos repetidos en el primer alfabeto");
+    }
+    else if(!buscarrepetidos(lenguaje2)){
+        alert("hay elementos repetidos en el segundo alfabeto");
+    }
+    else{
+        var g_l={
+            'vector_al1':[],
+            'vector_al2':[]
+        };
+        g_l.vector_al1=lenguaje1;
+        g_l.vector_al2=lenguaje2;
+        localStorage.setItem('g_l', JSON.stringify(g_l))
+        var guardado_l=JSON.parse(localStorage.getItem('g_l'));
+        location.href="index_lenguaje_operaciones.html";
+    }
+    
     console.log(guardado_l);
 }
 function obteneralfabeto(id1,id2){
-	alfabeto1=obtenerDato(id1);
-	alfabeto2=obtenerDato(id2);
-	var g_a={
-    	'vector_al1':[],
-    	'vector_al2':[]
-    };
-    g_a.vector_al1=alfabeto1;
-    g_a.vector_al2=alfabeto2;
-    localStorage.setItem('g_a', JSON.stringify(g_a))
-    var guardado_a=JSON.parse(localStorage.getItem('g_a'));
-    console.log(guardado_a);
+    alfabeto1=obtenerDato(id1);
+    alfabeto2=obtenerDato(id2);
+    
+    if(!buscarrepetidos(alfabeto1)){
+        alert("hay elementos repetidos en el primer alfabeto");
+    }
+    else if(!buscarrepetidos(alfabeto2)){
+        alert("hay elementos repetidos en el segundo alfabeto");
+    }
+    else{
+        var g_a={
+            'vector_al1':[],
+            'vector_al2':[]
+        };
+        g_a.vector_al1=alfabeto1;
+        g_a.vector_al2=alfabeto2;
+        localStorage.setItem('g_a', JSON.stringify(g_a))
+        var guardado_a=JSON.parse(localStorage.getItem('g_a'));
+        location.href="index_alfabeto_operaciones.html";
+
+    }
+    
+}
+function buscarrepetidos(vector){
+    var i=0;
+    for(var j=0; j < vector.length; j++){
+        i=j+1;
+        for(i;i<vector.length;i++){
+            if(vector[j] == vector[i]){
+                return false;
+            }
+        }
+        
+    }
+    
+    return true;
+
+
 }
 function obtenerDato( id){
     var alfabeto =document.getElementById(id).value;
     var inst="";
+    var cont = 0;
     var vec=[];
     for(var a=0;a<alfabeto.length;a++){
-    	if(alfabeto[a]==" "){
-    		if(inst==""){
+        if(alfabeto[a]==" "){
+            if(inst==""){
 
-    		}else{
-				vec.push(inst);
-    			inst="";
-    		}
-    	}
-    	else{
-    		inst=inst+alfabeto[a];
-    	}
+            }else{
+                vec.push(inst);
+                cont ++;
+                inst="";
+            }
+        }
+        else{
+            inst=inst+alfabeto[a];
+        }
     }
     if(inst==""){
-    	}else{
-			vec.push(inst);	
-    	}
-    
+        }else{
+            vec.push(inst);
+            cont++;
+        }
+    if(cont == 0){
+        vec[0]="&";
+    }
     return vec;
 } 
 
 function recuperar(id){
-	var obj = JSON.parse(localStorage.getItem(id));
+    var obj = JSON.parse(localStorage.getItem(id));
     return obj;
 }
 
