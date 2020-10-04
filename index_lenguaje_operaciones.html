@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">  
+  <head>    
+    <title>Proyecto numero 1</title>    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin=" anonymous">
+  </head>  
+  <body style="background: rgb(213,253,255);">
+    <div class="container">
+      </br>
+      <header class="row justify-content-center ">Operaciones del lenguaje</header>
+      </br>
+      </br>
+      <div class="row" >
+        <div class="col">
+          <p>Los lenguajes ingresados son:</p>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col">
+          <h5>
+            <script>
+              var vectores_lenguaje = JSON.parse(localStorage.getItem("g_l"));
+              var lenguaje1 = vectores_lenguaje.vector_al1;
+              var lenguaje2 = vectores_lenguaje.vector_al2;
+              console.log(lenguaje1);
+              document.write("L1 = { "+lenguaje1[0]);
+              for(var i=1; i<lenguaje1.length; i++){
+                document.write(", "+lenguaje1[i]);
+              }
+              document.write(" }");
+            </script>
+          </h5>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col">
+          <h5>
+            <script>
+              document.write("L2 = { "+lenguaje2[0]);
+              for(var i=1; i<lenguaje2.length; i++){
+                document.write(", "+lenguaje2[i]);
+              }
+              document.write(" }");
+
+            </script>
+          </h5>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>OPERACIONES</p>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col-4" >
+          <p>Realizar la concatenacion entre lenguajes</p>
+        </div>
+        <div class="col">
+          <button type="button" onclick="union('g_l')" class="btn btn-outline-primary">Ir</button>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col-4" >
+          <p>Realizar la diferencia de los lenguajes </p>
+        </div>
+        <div class="col">
+          <button type="button" onclick="diferencia('g_l')" class="btn btn-outline-primary"><a>Ir</a></button>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col-4" >
+          <p>Realizar la interseccion de los lenguajes </p>
+        </div>
+        <div class="col">
+          <button type="button" onclick="interseccion('g_l')" class="btn btn-outline-primary"><a>Ir</a></button>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col-4" >
+          <p>Realizar la potencia del lenguaje </p>
+        </div>
+        <div class="col">
+          <button type="button" onclick="potencia('g_l')" class="btn btn-outline-primary"><a>Ir</a></button>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col-4" >
+          <p>Realizar la inversa del lenguaje </p>
+        </div>
+        <div class="col">
+          <button type="button" onclick="inversa('g_l')" class="btn btn-outline-primary"><a>Ir</a></button>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px">
+        <div class="col-4" >
+          <p>Calcular la cardinalidad de una palabra</p>
+        </div>
+        <div class="col">
+          <button type="button" onclick="cardinalidad('g_l')" class="btn btn-outline-primary"><a>Ir</a></button>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col align-self-end">
+          <button type="button" class="btn btn-outline-primary"><a href="index_lenguaje.html">Atras</a></button>
+        </div>
+      </div>
+    </div>  
+  </body>
+  <!-- CSS only -->
+
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>  
+<script src="funciones1.js "type="text/javascript"></script>
+</html>
